@@ -1,6 +1,6 @@
 var UserInfo = function(symptom, address) {
   this.symptom = symptom;
-  this.adress = address;
+  this.address = address;
 
 };
 
