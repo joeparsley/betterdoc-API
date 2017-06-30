@@ -2,6 +2,9 @@ var apiKey = require('./../.env').apiKey;
 var UserInfo = require('./../js/scripts.js').userInfoModule;
 
 
+var displayResponse = function(response) {
+  $('.output').text(response);
+};
 
 $(document).ready(function() {
 
@@ -11,7 +14,8 @@ $('#form').submit(function(e) {
   var userSymptom = $('#user-symptom').val();
   var userAddress = $('#user-address').val();
   var test = new UserInfo(userSymptom, userAddress);
-
+  test.getDoctor();
+  console.log(test);
 
 
 
