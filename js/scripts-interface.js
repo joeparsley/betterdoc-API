@@ -1,11 +1,6 @@
-var apiKey = require('./../.env').apiKey;
-// var apiKeyMap = require('./../.env').apiKeyMap;
 var UserInfo = require('./../js/scripts.js').userInfoModule;
 
 
-var displayResponse = function(response) {
-  $('.output').text(response);
-};
 
 $(document).ready(function() {
 
@@ -20,7 +15,11 @@ $('#form').submit(function(e) {
 
   var userFinal = new UserInfo(symptomSplit, addressSplit);
 
-  userFinal.getLocation();
+  userFinal.getLocation( (lat,lng) => {
+    userFinal.getSymptom();
+  });
+
+
 
 
   console.log(userFinal);

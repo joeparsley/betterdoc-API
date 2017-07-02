@@ -3,31 +3,36 @@ var apiKeyMap = require('./../.env').apiKeyMap;
 
 var UserInfo = function(symptom, address) {
   this.symptom = symptom;
-  this.address = [];
+  this.address = address;
+  this.lat = "";
+  this.lng = "";
 };
 
 UserInfo.prototype.getSymptom = function() {
-  $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + this.symptom + '&location=45.535081%2C-122.5947734%2C100&user_location=45.535081%2C-122.5947734&skip=0&limit=1&user_key=' + apiKey).then(function(response){
+  $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + this.symptom + '&location=' + this.lat + '%2C' + this.lng + '%2C100&user_location=' + this.lat + '%2C'+ this.lng + '&skip=0&limit=1&user_key=' + apiKey).then(function(response){
     console.log(response);
   })
     .fail(function(error) {
-    $('#output').text("try again");
+    $('#output').text("Ooops!");
   });
 
 };
 
 
-UserInfo.prototype.getLocation = function() {
-  $.get('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + apiKeyMap).then(function(response){
-    // var lat = response.results[0].geometry.location.lat;
-    // var lng = response.results[0].geometry.location.lng;
-    console.log(response.results[0].geometry.location.lat);
-    console.log(response.results[0].geometry.location.lng);
+UserInfo.prototype.getLocation = function(cb) {
+  var self = this;
+  $.get('https://maps.googleapis.com/maps/api/geocode/json?address=;' + this.address + '+CA&key=' + apiKeyMap).then(function(response) {
+    var lat = response.results[0].geometry.location.lat;
+    var lng = response.results[0].geometry.location.lng;
+    self.lat = lat;
+    self.lng = lng;
+    cb(lat, lng);
+
   })
     .fail(function(error) {
-    $('#output').text("try again");
+    $('#output').text("Ooops!");
   });
-
 };
+
 
 exports.userInfoModule = UserInfo;
