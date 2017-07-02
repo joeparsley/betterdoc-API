@@ -1,9 +1,23 @@
 // REQUIRE CONSTRUCTOR FROM BACK-END
 var UserInfo = require('./../js/scripts.js').userInfoModule;
 // DISPLAY FUNCTION
-var displayResponse = function(response) {
-  $('.output').text(response);
+var displayResponse = function(first, last, bio) {
+  $('#first-name').text(first);
+  $('#last-name').text(last);
+  $('#bio').text(bio);
+
 }
+
+
+
+
+var displayFirstName = function(response) {
+  $('#first-name').text(response);
+}
+var displayLastName = function(response) {
+  $('#last-name').text(response);
+}
+
 // START DOCUMENT READY
 $(document).ready(function() {
  // START SUBMIT FUNCTION
