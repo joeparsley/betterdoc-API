@@ -1,6 +1,8 @@
 var UserInfo = require('./../js/scripts.js').userInfoModule;
 
-
+var displayResponse = function(response) {
+  $('.output').text(response);
+}
 
 $(document).ready(function() {
 
@@ -16,7 +18,7 @@ $('#form').submit(function(e) {
   var userFinal = new UserInfo(symptomSplit, addressSplit);
 
   userFinal.getLocation( (lat,lng) => {
-    userFinal.getSymptom();
+    userFinal.getSymptom(displayResponse);
   });
 
 
