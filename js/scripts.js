@@ -11,16 +11,12 @@ var UserInfo = function(symptom, address) {
 // PROTOTYPE FOR BETTERDOC API GET REQUEST
 UserInfo.prototype.getSymptom = function(displayResponse) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + this.symptom + '&location=' + this.lat + '%2C' + this.lng + '%2C100&user_location=' + this.lat + '%2C'+ this.lng + '&skip=0&limit=1&user_key=' + apiKey).then(function(response){
-    console.log(response);
     displayResponse(response.data[0].profile.first_name,response.data[0].profile.last_name,response.data[0].profile.bio);
   })
     .fail(function(error) {
     $('#output').text("Ooops!");
   });
-
 };
-
-
 // PROTOTYPE FOR GOOGLEMAPS API GET REQUEST
 UserInfo.prototype.getLocation = function(cb) {
   var self = this;

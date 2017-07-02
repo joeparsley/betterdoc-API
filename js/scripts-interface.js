@@ -7,17 +7,6 @@ var displayResponse = function(first, last, bio) {
   $('#bio').text(bio);
 
 }
-
-
-
-
-var displayFirstName = function(response) {
-  $('#first-name').text(response);
-}
-var displayLastName = function(response) {
-  $('#last-name').text(response);
-}
-
 // START DOCUMENT READY
 $(document).ready(function() {
  // START SUBMIT FUNCTION
@@ -34,8 +23,7 @@ $('#form').submit(function(e) {
   // RUN INFORMATION THROUGH PROTOTYPES IN BACK-END
   userFinal.getLocation( (lat,lng) => {
     userFinal.getSymptom(displayResponse);
-  });
-  console.log(userFinal);
+    });
   });
 // END SUBMIT FUNCTION
 

@@ -71,8 +71,22 @@ header {
   }
 
   #output-field {
-    @include size(400px, 400px);
-    border: 2px solid red;
+    width: 80%;
+    min-height: 100px;
     background-color: white;
+    padding: 20px;
+    box-shadow: 3px 3px 3px black;
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    h3 {
+      font-size: 25px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
   }
 }
