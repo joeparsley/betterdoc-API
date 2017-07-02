@@ -1,0 +1,78 @@
+header {
+  @include size(100%, 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #666;
+  font-family: $header-font;
+  h1 {
+    margin-left: 50px;
+  }
+  ul {
+    @include size(250px, 75px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+    li {
+      display: inline-block;
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 24px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+
+#main-content {
+  @include size(100%);
+  font-family: $body-font;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  #input-field {
+    @include size(80%, 400px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    box-shadow: 3px 3px 3px black;
+
+
+    #form {
+      margin-bottom: 100px;
+
+
+
+      input {
+        @include size(400px, 50px);
+        margin-bottom: 20px;
+      }
+
+      input:nth-of-type(2) {
+        margin-left: 19px;
+      }
+
+      button {
+        @include size(150px, 50px);
+        margin-left: 240px;
+
+      }
+    }
+  }
+
+  #output-field {
+    @include size(400px, 400px);
+    border: 2px solid red;
+    background-color: white;
+  }
+}
