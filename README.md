@@ -25,7 +25,6 @@
 ## Technologies Used
 
 * HTML
-* Pug
 * CSS
 * Sass (Bourbon/Neat)
 * JavaScript
